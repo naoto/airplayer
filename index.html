@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>AirPlayer by Tomohiro</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>AirPlayer</h1>
+        <p>Command-line AirPlay video client for Apple TV</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/Tomohiro/airplayer" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Tomohiro/airplayer/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Tomohiro/airplayer/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p><a href="https://secure.travis-ci.org/Tomohiro/airplayer"><img src="https://secure.travis-ci.org/Tomohiro/airplayer.png" alt="Build Status"></a>
+<a href="https://gemnasium.com/Tomohiro/airplayer"><img src="https://gemnasium.com/Tomohiro/airplayer.png" alt="Dependency Status"></a>
+<a href="https://codeclimate.com/github/Tomohiro/airplayer"><img src="https://codeclimate.com/badge.png" alt="Code Climate"></a>
+<a href="http://coderwall.com/tomohiro"><img src="http://api.coderwall.com/tomohiro/endorsecount.png" alt="endorse"></a></p>
+
+<hr><h2>Requirements</h2>
+
+<ul>
+<li>Ruby 1.9.2 or later</li>
+<li>AppleTV 2G or later</li>
+</ul><h3>Ubuntu</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install rdnssd libavahi-compat-libdnssd-dev
+</pre></div>
+
+<h2>Installation</h2>
+
+<h3>RubyGems</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>gem install airplayer
+</pre></div>
+
+<h3>Bundler</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/Tomohiro/airplayer.git
+<span class="nv">$ </span><span class="nb">cd </span>airplayer
+<span class="nv">$ </span>bundle install --path vendor/bundle
+</pre></div>
+
+<h2>Usage</h2>
+
+<h3>Play online video</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>airplayer play http://example.com/my-video.mp4
+AirPlay: http://example.com/my-video.mp4 to Apple TV<span class="o">(</span>10.0.1.18<span class="o">)</span>
+   Time: 00:00:31 |<span class="o">==============================================</span>| 100% Complete
+</pre></div>
+
+<h3>Play local video</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>airplayer play <span class="nv">$HOME</span>/Movies/video.mp4
+AirPlay: http://10.0.1.13:7070 to Apple TV<span class="o">(</span>10.0.1.18<span class="o">)</span>
+   Time: 00:00:31 |<span class="o">==============================================</span>| 100% Complete
+</pre></div>
+
+<h3>Repeat play</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>airplayer play ./video.mp4 --repeat
+AirPlay: http://10.0.1.13:7070 to Apple TV<span class="o">(</span>10.0.1.18<span class="o">)</span>
+   Time: 00:00:31 |<span class="o">=====================</span>                         | 50% Streaming
+</pre></div>
+
+<h2>LICENSE</h2>
+
+<p>© 2012 Tomohiro, TAIRA.
+This project is licensed under the MIT license.
+See LICENSE for details.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Tomohiro">Tomohiro</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
