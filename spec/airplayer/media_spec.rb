@@ -1,54 +1,50 @@
 # encoding: UTF-8
+require 'fakefs/spec_helpers'
 require 'spec_helper'
 
 module AirPlayer
   describe Media do
-    subject { AirPlayer::Media }
+    include FakeFS::SpecHelpers
 
-    context 'valid mime types' do
-      it 'supported' do
-        expect(subject.playable?('007 SKYFALL.mp4')).to be_true
-        expect(subject.playable?('007 SKYFALL.ts')).to be_true
-        expect(subject.playable?('007 SKYFALL.m4v')).to be_true
-        expect(subject.playable?('007 SKYFALL.mov')).to be_true
-        expect(subject.playable?('007 SKYFALL.ts')).to be_true
+    let (:media) do
+      AirPlayer::Media
+    end
+
+    describe '#playable?' do
+      context 'with supported mime types' do
+        it 'returns true' do
+          expect(media.playable?('007 SKYFALL.mp4')).to be true
+          expect(media.playable?('007 SKYFALL.ts')).to be true
+          expect(media.playable?('007 SKYFALL.m4v')).to be true
+          expect(media.playable?('007 SKYFALL.mov')).to be true
+          expect(media.playable?('007 SKYFALL.ts')).to be true
+          expect(media.playable?('マルチ☆バイト.mp4')).to be true
+        end
+      end
+
+      context 'with unsupported mime types' do
+        it 'returns false' do
+          expect(media.playable?('007 SKYFALL.flv')).to be false
+          expect(media.playable?('007 SKYFALL.wmv')).to be false
+          expect(media.playable?('NOT_PLAYABLE_FILE')).to be false
+        end
       end
     end
 
-    context 'invalid mime types' do
-      it 'unsupported' do
-        expect(subject.playable?('007 SKYFALL.flv')).to be_false
-        expect(subject.playable?('007 SKYFALL.wmv')).to be_false
-        expect(subject.playable?('.DS_Store')).to be_false
-        expect(subject.playable?('Fate_Kaleid_Liner_プリズマ☆イリヤ')).to be_false
+    describe '.file?' do
+      context 'with given local file' do
+        it 'returns true' do
+          FileUtils.touch('fake_movie.m4v')
+          expect(media.new('fake_movie.m4v').file?).to be true
+        end
       end
     end
 
-    context 'give Gemfile' do
-      it 'file' do
-        media = subject.new('./Gemfile')
-        expect(media.file?).to be_true
-      end
-    end
-
-    context 'give URL' do
-      it 'URL' do
-        #media = subject.new('http://example.com/video.mp4')
-        #expect(media.url?).to be_true
-      end
-    end
-
-    context 'give YouTube URL' do
-      it 'has title and url' do
-        #media = subject.new('http://www.youtube.com/watch?v=gVNYm9Qncyc')
-        #expect(media.url?).to be_true
-        #expect(media.title).to match(/Mogwai/)
-      end
-
-      it 'has title and short url' do
-        #media = subject.new('http://youtu.be/gVNYm9Qncyc')
-        #expect(media.url?).to be_true
-        #expect(media.title).to match(/Mogwai/)
+    describe '.url?' do
+      context 'with given URL' do
+        it 'returns true' do
+          expect(media.new('http://example.com/video.mp4').url?).to be true
+        end
       end
     end
   end

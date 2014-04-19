@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'thor'
   spec.add_runtime_dependency 'ruby-progressbar'
-  spec.add_runtime_dependency 'airplay', '~> 0.2.9'
+  spec.add_runtime_dependency 'airplay', '= 1.0.2'
   spec.add_runtime_dependency 'rack'
   spec.add_runtime_dependency 'mime-types'
   spec.add_runtime_dependency 'nokogiri'
@@ -28,5 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'guard-rspec'
+  spec.add_development_dependency 'fakefs'
   spec.add_development_dependency 'coveralls'
 end
