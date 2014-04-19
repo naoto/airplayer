@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-require 'rss'
-require 'nokogiri'
-
 module AirPlayer
   class Playlist < Array
     def initialize(options = {})
@@ -14,8 +11,6 @@ module AirPlayer
       case type(item)
       when :local_dir
         concat(media_in_local(item))
-      when :podcast
-        concat(media_in_podcast(item))
       when :url
         push(Media.new(item))
       end
@@ -36,8 +31,6 @@ module AirPlayer
           :local_dir
         elsif Media.playable? item
           :url
-        elsif RSS::Parser.parse(open(item))
-          :podcast
         end
       end
 
